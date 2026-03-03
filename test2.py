@@ -23,12 +23,6 @@ class Calculator:
         """Raise a number to a power."""
         return a ** b
 
-    def sqrt(self, a):
-        """Calculate square root of a number."""
-        if a < 0:
-            raise ValueError("Cannot calculate square root of negative number")
-        return a ** 0.5
-
 def get_user_input():
     """Get operation and numbers from user with error handling."""
     try:
@@ -37,8 +31,8 @@ def get_user_input():
         
         operation = input("Enter operation (+, -, *, /, **): ").strip()
         
-        if operation not in ['+', '-', '*', '/', '**', '!']:
-            print("Error: Invalid operation. Please use +, -, *, /, ! or **")
+        if operation not in ['+', '-', '*', '/', '**']:
+            print("Error: Invalid operation. Please use +, -, *, / or **")
             return None
         
         num1 = float(input("Enter first number: "))
@@ -67,8 +61,6 @@ def perform_calculation(calc, operation, num1, num2):
             result = calc.divide(num1, num2)
         elif operation == '**':
             result = calc.power(num1, num2)
-        elif operation == '!':
-            result = calc.sqrt(num1)
         print(f"\nResult: {num1} {operation} {num2} = {result}")
         return result
     
